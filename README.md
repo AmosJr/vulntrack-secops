@@ -76,8 +76,25 @@ YAML
 
 ## 📁 Project Structure
 
-vulntrack-secops/ ├── api/ # FastAPI application │ ├── main.py │ ├── models.py │ └── routes.py ├── archive/ # Archiving logic │ └── archive_to_s3.py │ └── output/ # Local archive files ├── dashboard/ # Streamlit frontend │ └── vuln_dashboard.py ├── db/ │ └── init.sql # DB schema ├── ingestion/ │ └── fetch_and_store.py ├── config/ # (optional) config loaders ├── mock_scanner_api.py # Simulated scanner API (Flask) ├── docker-compose.yml # PostgreSQL container setup ├── .env # DB credentials ├── requirements.txt # Python dependencies └── README.md
-
+vulntrack-secops/
+├── api/                    # FastAPI backend
+│   ├── main.py             # Entry point
+│   ├── models.py           # Pydantic models
+│   └── routes.py           # Endpoints
+├── ingestion/              # Ingestion from mock API
+│   └── fetch_and_store.py
+├── archive/                # AWS S3 archiver
+│   └── archive_to_s3.py
+├── db/
+│   └── init.sql            # DB schema
+├── config/
+│   └── settings.py         # DB, S3, API config
+├── utils/
+│   └── logger.py           # Custom logger
+├── mock_scanner_api.py     # Mock API provider
+├── requirements.txt
+├── README.md
+└── .env                    # Credentials & secrets
 
 ---
 
@@ -109,26 +126,28 @@ psql -h localhost -U postgres -d vulntrack -f db/init.sql
 
 ▶️ How to Run Each Component
 
-Mock Vulnerability Scanner
-bash
+-Mock Vulnerability Scanner
+
 python3 mock_scanner_api.py
 
-Ingest Data into PostgreSQL
-bash
+-Ingest Data into PostgreSQL
+
 python3 ingestion/fetch_and_store.py
 
-Start FastAPI Backend
-bash
+-Start FastAPI Backend
+
 uvicorn api.main:app --reload
+
 Visit: http://localhost:8000/docs
 
-Launch Streamlit Frontend
-bash
+-Launch Streamlit Frontend
+
 streamlit run dashboard/vuln_dashboard.py
+
 Visit: http://localhost:8501
 
-Simulate Archiving (Resolved/Old Vulns)
-bash
+-Simulate Archiving (Resolved/Old Vulns)
+
 python3 archive/archive_to_s3.py
 
 _____
