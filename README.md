@@ -105,7 +105,10 @@ Then run the schema:
 bash
 psql -h localhost -U postgres -d vulntrack -f db/init.sql
 
+---
+
 ▶️ How to Run Each Component
+
 Mock Vulnerability Scanner
 bash
 python3 mock_scanner_api.py
@@ -127,6 +130,7 @@ Visit: http://localhost:8501
 Simulate Archiving (Resolved/Old Vulns)
 bash
 python3 archive/archive_to_s3.py
+
 _____
 ✅ Features
  Pull mock scanner data via API
