@@ -1,7 +1,4 @@
-# vulntrack-secops
-A vulnerability tracking system for SecOps
-
-MARKDOWN
+#MARKDOWN
 
 # VulnTrack SecOps
 
@@ -24,7 +21,7 @@ VulnTrack SecOps is designed to replicate the tools and workflows used by securi
 
 ## Architecture
 
-SCSS
+#SCSS
 
           ┌─────────────────────┐
           │  Flask Mock Scanner │
@@ -56,7 +53,7 @@ SCSS
           │  to JSON   │
           └────────────┘
 
-YAML
+#YAML
 
 ---
 
@@ -74,8 +71,8 @@ YAML
 
 ---
 
-## 📁 Project Structure
-
+## Project Structure
+```text
 vulntrack-secops/
 ├── api/                    # FastAPI backend
 │   ├── main.py             # Entry point
@@ -95,63 +92,61 @@ vulntrack-secops/
 ├── requirements.txt
 ├── README.md
 └── .env                    # Credentials & secrets
-
----
-
+```
 ## 🚀 Getting Started
 
 1. Clone the Repository
-bash
+```bash
 git clone https://github.com/AmosJr/vulntrack-secops.git
 cd vulntrack-secops
+```
 
 2. Create & Activate Virtual Environment
-bash
+```bash
 python3 -m venv venv
 source venv/bin/activate
-
+```
 3. Install Dependencies
-bash
+```bash
 pip install -r requirements.txt
-
+```
 4. Start PostgreSQL (via Docker)
-bash
+```bash
 docker compose up -d
-
+```
 Then run the schema:
-bash
+```bash
 psql -h localhost -U postgres -d vulntrack -f db/init.sql
-
+```
 ---
 
-▶️ How to Run Each Component
+## How to Run Each Component
 
 -Mock Vulnerability Scanner
-
+```py
 python3 mock_scanner_api.py
-
+```
 -Ingest Data into PostgreSQL
-
+```py
 python3 ingestion/fetch_and_store.py
-
+```
 -Start FastAPI Backend
-
+```bash
 uvicorn api.main:app --reload
 
-Visit: http://localhost:8000/docs
-
+          ### Visit: http://localhost:8000/docs
+```
 -Launch Streamlit Frontend
-
+```py
 streamlit run dashboard/vuln_dashboard.py
-
-Visit: http://localhost:8501
-
+          ### Visit: http://localhost:8501
+```
 -Simulate Archiving (Resolved/Old Vulns)
-
+```py
 python3 archive/archive_to_s3.py
-
+```
 _____
-✅ Features
+## Features
  Pull mock scanner data via API
  
  Store and query in PostgreSQL
@@ -164,7 +159,7 @@ _____
  
  Simulated archiving to local JSON
 _____
-📈 Future Enhancements
+## Future Enhancements
 Add authentication to FastAPI
 
 Connect archiver to AWS S3 (via boto3)
@@ -175,7 +170,7 @@ Schedule ingestion with CRON or Airflow
 
 Dockerize the whole stack
 ______
-🧠 Real-World Relevance
+## Real-World Relevance
 This project simulates systems used by security teams in:
 
 Banking & Fintech
@@ -187,5 +182,5 @@ Cyber Threat Management
 Built to demonstrate both backend & frontend engineering skills with a focus on security, data, and cloud-readiness.
 _____
 
-👨‍💻 Author
+## 👨‍💻 Author
 Amos K. Agyeman
