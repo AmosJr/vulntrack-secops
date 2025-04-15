@@ -127,12 +127,42 @@ Visit: http://localhost:8501
 Simulate Archiving (Resolved/Old Vulns)
 bash
 python3 archive/archive_to_s3.py
-
+_____
 ✅ Features
  Pull mock scanner data via API
+ 
  Store and query in PostgreSQL
+ 
  REST API to filter vulnerabilities
+ 
  Streamlit dashboard with filtering
+ 
  Highlight unresolved vulnerabilities
+ 
  Simulated archiving to local JSON
+_____
+📈 Future Enhancements
+Add authentication to FastAPI
 
+Connect archiver to AWS S3 (via boto3)
+
+Add charts to Streamlit dashboard
+
+Schedule ingestion with CRON or Airflow
+
+Dockerize the whole stack
+______
+🧠 Real-World Relevance
+This project simulates systems used by security teams in:
+
+Banking & Fintech
+
+Cloud Security Engineering
+
+Cyber Threat Management
+
+Built to demonstrate both backend & frontend engineering skills with a focus on security, data, and cloud-readiness.
+_____
+
+👨‍💻 Author
+Amos K. Agyeman
